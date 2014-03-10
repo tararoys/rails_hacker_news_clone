@@ -13,12 +13,10 @@
 
   <nav>
     <ul>
-
-        <li> <%= session.inspect %> </li>
         <li> <a href= "/"> Tara News </a> </li>
-      <% if session[:signed_in] %>
-        <li> hello, <a href="/users/<%=@user.id%>"> <%= @user.email %> </a> </li>
-        <li><a href="/users/logout">logout</a></li>
+      <% if current_user %>
+        <li> hello, <%= link_to current_user.email, edit_user_registration_path %>  </li>
+        <li> <%= link_to "logout", destroy_user_session_path, method: :delete %> </li>
       <% else %>
         <li><a href="/users/sign_in">login</a></li>
         <li><a href="/users/sign_up">sign up</a></li>
