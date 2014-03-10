@@ -11,6 +11,22 @@
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
 
+  <nav>
+    <ul>
+
+        <li> <%= session.inspect %> </li>
+        <li> <a href= "/"> Tara News </a> </li>
+      <% if session[:signed_in] %>
+        <li> hello, <a href="/users/<%=@user.id%>"> <%= @user.email %> </a> </li>
+        <li><a href="/users/logout">logout</a></li>
+      <% else %>
+        <li><a href="/users/sign_in">login</a></li>
+        <li><a href="/users/sign_up">sign up</a></li>
+      <% end %>
+
+    </ul>
+  </nav>
+
 <%= yield %>
 
 </body>
