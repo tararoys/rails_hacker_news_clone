@@ -7,7 +7,7 @@
   </div>
 
   <div class="comments">
-    <a href="/comment/new?post_id=<%=@post.id%>"> <b> new comment</b></a>
+    <%= link_to "new comment", new_post_comment_path(@post) %>
     <ul>
       <% @post.comments.each do |comment| %>
         <li> <%= comment.content %>
