@@ -1,1 +1,14 @@
-<h1> hello hacker news </h1>
+
+
+ <h1> Posts </h1>
+ <ul>
+      <% Post.all.each do |post| %>
+        <li>
+          <%= link_to post.title, post_url(post.id) %>
+           <%= link_to post.source, post.source %>
+           <br>
+           <%= post.author.email %>
+           <%= post.comments.count %>
+        </li>
+      <% end %>
+  </ul>

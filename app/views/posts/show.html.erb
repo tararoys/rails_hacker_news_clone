@@ -1,0 +1,7 @@
+  <div class="post">
+    <%= @post.title %>
+    <%= link_to @post.source, @post.source %>
+    <br>
+    <%= @post.author.email %>
+    <%= @post.comments.count %>
+  </div>
