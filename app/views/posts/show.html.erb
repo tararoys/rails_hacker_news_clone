@@ -5,3 +5,25 @@
     <%= @post.author.email %>
     <%= @post.comments.count %>
   </div>
+
+  <div class="comments">
+    <a href="/comment/new?post_id=<%=@post.id%>"> <b> new comment</b></a>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li> <%= comment.content %>
+
+          <% if @user && comment.user_id == @user.id %>
+            <a href="/comment/<%= comment.id %>/edit"> edit </a>
+          <% end %>
+
+          <a href="/users/<%=comment.user.id%>"><%= comment.user.email %></a>
+          <span> <%= comment.created_at.to_s(:db) %></span>
+
+          <% if @user && comment.user_id == @user.id %>
+            <a href="/comment/<%= comment.id %>/delete"> delete </a>
+          <% end %>
+
+        </li>
+      <% end %>
+    </ul>
+  </div>
